@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using DotLiquid.Exceptions;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 
 namespace DotLiquid.Tests
 {
@@ -15,7 +16,7 @@ namespace DotLiquid.Tests
                 expected: "Hello Tobi",
                 template: template,
                 anonymousObject: new { greeting = "Hello", name = "Tobi" },
-                namingConvention: new RubyNamingConvention());
+                namingConvention: TestsDefaultNamingConvention.GetDefaultNamingConvention());
 
             var csNamingConvention = new CSharpNamingConvention();
             Helper.AssertTemplateResult(
@@ -33,20 +34,7 @@ namespace DotLiquid.Tests
         [Test]
         public void TestTagsStudlyCapsAreNotAllowed()
         {
-            lock (Template.NamingConvention)
-            {
-                var currentNamingConvention = Template.NamingConvention;
-                Template.NamingConvention = new RubyNamingConvention();
-
-                try
-                {
-                    Assert.Throws<SyntaxException>(() => Template.Parse("{% IF user = 'tobi' %}Hello Tobi{% EndIf %}"));
-                }
-                finally
-                {
-                    Template.NamingConvention = currentNamingConvention;
-                }
-            }
+            Assert.Throws<SyntaxException>(() => Template.Parse("{% IF user = 'tobi' %}Hello Tobi{% EndIf %}", TestsDefaultNamingConvention.GetDefaultNamingConvention()));
         }
 
         [Test]

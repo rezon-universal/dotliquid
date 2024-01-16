@@ -1,10 +1,12 @@
 using System.Globalization;
 using DotLiquid.Exceptions;
 using DotLiquid.FileSystems;
+using DotLiquid.NamingConventions;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests
 {
+    using DotLiquid.Tests.Util;
     using System.Collections.Generic;
     using System.IO;
     using System.Reflection;
@@ -12,6 +14,8 @@ namespace DotLiquid.Tests
     [TestFixture]
     public class FileSystemTests
     {
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
+
         private readonly string[] invalidPaths = new[]
         {
             "\root\file",
@@ -44,7 +48,7 @@ namespace DotLiquid.Tests
         [Test]
         public void TestDefault()
         {
-            Assert.Throws<FileSystemException>(() => new BlankFileSystem().ReadTemplateFile(new Context(CultureInfo.InvariantCulture), "dummy"));
+            Assert.Throws<FileSystemException>(() => new BlankFileSystem().ReadTemplateFile(new Context(CultureInfo.InvariantCulture, NamingConvention), "dummy"));
         }
         
 

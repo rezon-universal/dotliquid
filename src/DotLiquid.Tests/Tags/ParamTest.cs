@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using DotLiquid.Exceptions;
+using DotLiquid.NamingConventions;
 using DotLiquid.Tags;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests.Tags
@@ -10,15 +12,17 @@ namespace DotLiquid.Tests.Tags
     [TestFixture]
     public class ParamTests
     {
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
+
         [Test]
         public void TestInitialize_SyntaxValidation()
         {
             var tokens = new List<string>();
-            Assert.Throws<SyntaxException>(() => new Param().Initialize(tagName: "param", markup: "", tokens: tokens));
-            Assert.Throws<SyntaxException>(() => new Param().Initialize(tagName: "param", markup: "   ", tokens: tokens));
-            Assert.Throws<SyntaxException>(() => new Param().Initialize(tagName: "param", markup: "date_format", tokens: tokens));
-            Assert.Throws<SyntaxException>(() => new Param().Initialize(tagName: "param", markup: "date_format=", tokens: tokens));
-            Assert.Throws<SyntaxException>(() => new Param().Initialize(tagName: "param", markup: "useDotNet='true'", tokens: tokens));
+            Assert.Throws<SyntaxException>(() => new Param().Initialize(tagName: "param", markup: "", tokens: tokens, NamingConvention));
+            Assert.Throws<SyntaxException>(() => new Param().Initialize(tagName: "param", markup: "   ", tokens: tokens, NamingConvention));
+            Assert.Throws<SyntaxException>(() => new Param().Initialize(tagName: "param", markup: "date_format", tokens: tokens, NamingConvention));
+            Assert.Throws<SyntaxException>(() => new Param().Initialize(tagName: "param", markup: "date_format=", tokens: tokens, NamingConvention));
+            Assert.Throws<SyntaxException>(() => new Param().Initialize(tagName: "param", markup: "useDotNet='true'", tokens: tokens, NamingConvention));
         }
 
         [TestCase("date_format='unknown'")] // unknown is not a valid date_format
@@ -30,9 +34,9 @@ namespace DotLiquid.Tests.Tags
         public void TestInvalidOptions(string markup)
         {
             var tag = new Param();
-            tag.Initialize(tagName: "param", markup: markup, tokens: null);
+            tag.Initialize(tagName: "param", markup: markup, tokens: null, NamingConvention);
 
-            var context = new Context(new CultureInfo("en-US"));
+            var context = new Context(new CultureInfo("en-US"), NamingConvention);
             Assert.Throws<SyntaxException>(() => tag.Render(context, new StringWriter()));
         }
 
