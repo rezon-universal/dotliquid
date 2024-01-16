@@ -1,4 +1,5 @@
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests
@@ -6,7 +7,7 @@ namespace DotLiquid.Tests
     [TestFixture]
     internal class LiquidTypeAttributeTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         [LiquidType]
         public class MyLiquidTypeWithNoAllowedMembers
@@ -98,7 +99,7 @@ namespace DotLiquid.Tests
         public void TestLiquidTypeWithReservedKeyword()
         {
             var reservedType = new MyLiquidTypeWithReservedKeyword() { Type = "worked" };
-            var namingConvention = new RubyNamingConvention();
+            var namingConvention = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
             Helper.AssertTemplateResult(
               expected: "worked",
@@ -117,7 +118,7 @@ namespace DotLiquid.Tests
         public void TestLiquidTypeWithConflictingGetter()
         {
             var reservedType = new MyLiquidTypeWithConflictingGetter() { Name = "worked" };
-            var namingConvention = new RubyNamingConvention();
+            var namingConvention = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
             Helper.AssertTemplateResult(
               expected: "worked",
@@ -139,7 +140,7 @@ namespace DotLiquid.Tests
                 expected: "DotLiquid.Tests.LiquidTypeAttributeTests+MyLiquidTypeWithGlobalMemberAllowance",
                 template: "{{ value.to_string }}",
                 anonymousObject: new { value = new MyLiquidTypeWithGlobalMemberAllowance() },
-                namingConvention: new RubyNamingConvention());
+                namingConvention: TestsDefaultNamingConvention.GetDefaultNamingConvention());
         }
     }
 }

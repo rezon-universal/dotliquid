@@ -6,6 +6,7 @@ using NUnit.Framework;
 
 namespace DotLiquid.Tests
 {
+    using DotLiquid.Tests.Util;
     using System.Collections.Generic;
     using System.IO;
     using System.Reflection;
@@ -13,7 +14,7 @@ namespace DotLiquid.Tests
     [TestFixture]
     public class FileSystemTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         private readonly string[] invalidPaths = new[]
         {

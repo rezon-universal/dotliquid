@@ -36,7 +36,7 @@ namespace DotLiquid
         /// <param name="includeBaseClassProperties">If this is set to true, method will map base class' properties too. </param>
         public static Hash FromAnonymousObject(object anonymousObject, INamingConvention namingConvention = null, bool includeBaseClassProperties = false)
         {
-            namingConvention = namingConvention ?? new RubyNamingConvention();
+            namingConvention = namingConvention ?? DefaultNamingConvention.GetDefaultNamingConvention();
             Hash result = new Hash(namingConvention);
             if (anonymousObject != null)
             {
@@ -128,7 +128,7 @@ namespace DotLiquid
         /// <param name="namingConvention">Naming convention used for template parsing</param>
         public static Hash FromDictionary(IDictionary<string, object> dictionary, INamingConvention namingConvention = null)
         {
-            namingConvention = namingConvention ?? new RubyNamingConvention();
+            namingConvention = namingConvention ?? DefaultNamingConvention.GetDefaultNamingConvention();
             var hash = new Hash(namingConvention);
             hash.Merge(dictionary);
             return hash;

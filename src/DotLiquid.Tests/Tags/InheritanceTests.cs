@@ -1,5 +1,6 @@
 using DotLiquid.FileSystems;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests.Tags
@@ -7,7 +8,7 @@ namespace DotLiquid.Tests.Tags
     [TestFixture]
     public class InheritanceTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         private class TestFileSystem : IFileSystem
         {

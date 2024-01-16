@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using DotLiquid.Exceptions;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 using Newtonsoft.Json;
 using NUnit.Framework;
 
@@ -14,7 +15,7 @@ namespace DotLiquid.Tests
     [TestFixture]
     public class ContextTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         #region Classes used in tests
 

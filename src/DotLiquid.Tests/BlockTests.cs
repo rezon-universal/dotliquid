@@ -2,6 +2,7 @@ using System;
 using DotLiquid.NamingConventions;
 using DotLiquid.Tags;
 using DotLiquid.Tests.Framework;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests
@@ -9,7 +10,7 @@ namespace DotLiquid.Tests
     [TestFixture]
     public class BlockTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
         [Test]
         public void TestBlankspace()
         {

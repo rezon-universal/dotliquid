@@ -157,7 +157,7 @@ namespace DotLiquid
             FormatProvider = formatProvider;
             SyntaxCompatibilityLevel = Template.DefaultSyntaxCompatibilityLevel;
             UseRubyDateFormat = Liquid.UseRubyDateFormat;
-            NamingConvention = namingConvention ?? new RubyNamingConvention();
+            NamingConvention = namingConvention ?? DefaultNamingConvention.GetDefaultNamingConvention();
 
             SquashInstanceAssignsWithEnvironments();
         }

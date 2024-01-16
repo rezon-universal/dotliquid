@@ -1,6 +1,7 @@
 using System.Collections;
 using DotLiquid.Exceptions;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests.Tags
@@ -8,7 +9,7 @@ namespace DotLiquid.Tests.Tags
     [TestFixture]
     public class IfElseTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         [Test]
         public void TestIf()

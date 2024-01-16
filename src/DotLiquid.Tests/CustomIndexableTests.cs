@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests
@@ -8,7 +9,7 @@ namespace DotLiquid.Tests
     [TestFixture]
     public class CustomIndexableTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         #region Test classes
         internal class VirtualList : IIndexable, IEnumerable

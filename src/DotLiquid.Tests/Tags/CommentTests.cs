@@ -1,5 +1,6 @@
 using DotLiquid.NamingConventions;
 using DotLiquid.Tags;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests.Tags
@@ -7,7 +8,7 @@ namespace DotLiquid.Tests.Tags
     [TestFixture]
     public class CommentTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         [Test]
         public void TestEmptyComment()

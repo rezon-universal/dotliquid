@@ -138,7 +138,7 @@ namespace DotLiquid
                 Type dropType = GetObject().GetType();
                 if (!TypeResolutionCache.Instance.TryGetValue(dropType, out TypeResolution resolution))
                 { 
-                    TypeResolutionCache.Instance[dropType] = resolution = CreateTypeResolution(dropType, Context?.NamingConvention ?? new RubyNamingConvention());
+                    TypeResolutionCache.Instance[dropType] = resolution = CreateTypeResolution(dropType, Context?.NamingConvention ?? DefaultNamingConvention.GetDefaultNamingConvention());
                 }
                 return resolution;
             }

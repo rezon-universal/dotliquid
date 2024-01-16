@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests
@@ -12,7 +13,7 @@ namespace DotLiquid.Tests
     [TestFixture]
     public class StandardFilterTests
     {
-        private static INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private static INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         private Context _contextV20;
         private Context _contextV21;
@@ -1057,7 +1058,7 @@ PaulGeorge",
         [Test]
         public void TestFirstLastUsingRuby()
         {
-            var namingConvention = new RubyNamingConvention();
+            var namingConvention = TestsDefaultNamingConvention.GetDefaultNamingConvention();
             TestFirstLast(namingConvention, (name) => namingConvention.GetMemberName(name));
         }
 

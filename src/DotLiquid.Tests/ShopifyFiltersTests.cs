@@ -1,5 +1,6 @@
 using System.Collections;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests
@@ -7,7 +8,7 @@ namespace DotLiquid.Tests
     [TestFixture]
     public class ShopifyFiltersTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         [Test]
         public void TestMd5()

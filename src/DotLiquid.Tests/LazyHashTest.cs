@@ -7,13 +7,14 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 
 namespace DotLiquid.Tests
 {
     [TestFixture]
     public class LazyHashTest
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         public class LazyHash : Hash
         {

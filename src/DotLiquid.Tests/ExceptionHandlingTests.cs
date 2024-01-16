@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Threading;
 using DotLiquid.Exceptions;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests
@@ -10,7 +11,7 @@ namespace DotLiquid.Tests
     [TestFixture]
     public class ExceptionHandlingTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         private class ExceptionDrop : Drop
         {

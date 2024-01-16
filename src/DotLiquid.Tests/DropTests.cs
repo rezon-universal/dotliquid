@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests
@@ -11,7 +12,7 @@ namespace DotLiquid.Tests
     [TestFixture]
     public class DropTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         #region Classes used in tests
 
@@ -411,7 +412,7 @@ namespace DotLiquid.Tests
                 expected:"Missing property. Did you mean 'product_id'?",
                 template: "{{ value.ProductID }}",
                 anonymousObject: new { value = new CamelCaseDrop() },
-                namingConvention: new RubyNamingConvention());
+                namingConvention: TestsDefaultNamingConvention.GetDefaultNamingConvention());
         }
 
         [Test]

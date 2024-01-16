@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests
@@ -31,7 +32,7 @@ namespace DotLiquid.Tests
 
         public static void AssertTemplateResult(string expected, string template, object anonymousObject, INamingConvention namingConvention, SyntaxCompatibility syntax = SyntaxCompatibility.DotLiquid20)
         {
-            namingConvention = namingConvention ?? new RubyNamingConvention();
+            namingConvention = namingConvention ?? TestsDefaultNamingConvention.GetDefaultNamingConvention();
             LockTemplateStaticVars(() =>
             {
                 var localVariables = anonymousObject == null ? null : Hash.FromAnonymousObject(anonymousObject, namingConvention);
@@ -51,7 +52,7 @@ namespace DotLiquid.Tests
 
         public static void AssertTemplateResult(string expected, string template, Hash localVariables, IEnumerable<Type> localFilters, SyntaxCompatibility syntax = SyntaxCompatibility.DotLiquid20, INamingConvention namingConvention = null)
         {
-            namingConvention = namingConvention ?? new RubyNamingConvention();
+            namingConvention = namingConvention ?? TestsDefaultNamingConvention.GetDefaultNamingConvention();
             var parameters = new RenderParameters(System.Globalization.CultureInfo.CurrentCulture)
             {
                 LocalVariables = localVariables,

@@ -341,7 +341,7 @@ namespace DotLiquid
         /// </summary>
         internal Template()
         {
-            NamingConvention = new RubyNamingConvention();
+            NamingConvention = DefaultNamingConvention.GetDefaultNamingConvention();
         }
 
         /// <summary>

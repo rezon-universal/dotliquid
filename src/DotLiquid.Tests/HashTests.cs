@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests.Ns1
@@ -26,7 +27,7 @@ namespace DotLiquid.Tests
     public class HashTests
     {
         
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         public class TestBaseClass
         {

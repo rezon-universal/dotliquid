@@ -5,13 +5,14 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Globalization;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 
 namespace DotLiquid.Tests.Tags
 {
     [TestFixture]
     public class IncludeTagTests
     {
-        private static INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private static INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         private class TestFileSystem : IFileSystem
         {

@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using System.IO;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests
@@ -10,7 +11,7 @@ namespace DotLiquid.Tests
     public class OutputTests
     {
         
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         private static class FunnyFilter
         {

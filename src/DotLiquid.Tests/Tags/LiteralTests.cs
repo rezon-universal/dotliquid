@@ -4,13 +4,14 @@ using DotLiquid.Exceptions;
 using DotLiquid.NamingConventions;
 using NUnit.Framework;
 using DotLiquid.Tags;
+using DotLiquid.Tests.Util;
 
 namespace DotLiquid.Tests.Tags
 {
     [TestFixture]
     public class LiteralTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
         [Test]
         public void TestEmptyLiteral()
         {

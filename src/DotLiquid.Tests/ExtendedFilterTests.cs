@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 
 namespace DotLiquid.Tests
 {
     [TestFixture]
     public class ExtendedFilterTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         private Context _context;
 

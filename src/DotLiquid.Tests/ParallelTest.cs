@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 
 namespace DotLiquid.Tests {
     [TestFixture]
     public class ParallelTest
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
 
         [Test]
         public void TestCachedTemplateRender() {

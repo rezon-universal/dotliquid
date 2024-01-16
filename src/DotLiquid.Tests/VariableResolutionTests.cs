@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using DotLiquid.NamingConventions;
+using DotLiquid.Tests.Util;
 using NUnit.Framework;
 
 namespace DotLiquid.Tests
@@ -8,7 +9,7 @@ namespace DotLiquid.Tests
     [TestFixture]
     public class VariableResolutionTests
     {
-        private INamingConvention NamingConvention { get; } = new RubyNamingConvention();
+        private INamingConvention NamingConvention { get; } = TestsDefaultNamingConvention.GetDefaultNamingConvention();
         [Test]
         public void TestSimpleVariable()
         {
